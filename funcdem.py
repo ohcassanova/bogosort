@@ -7,18 +7,14 @@ for x in range(listsize):
     num = random.randint(1, 100)
     numlist.append(num)
 
-def checklistsorted(list):
-    for x in range(len(list)):
-        if list[x] < list[x + 1]:
-            pass
 
 
-def bogosort(numlist): #This can't be used to check is a list is sorted
-    if sorted(numlist) == numlist:
-        return numlist
+def bogosort(listtosort): #This can't be used to check if a list is sorted
+    if all(b >= a for a, b in zip(listtosort, listtosort[1:])):
+        return listtosort
     else:
-        numlist = random.shuffle(numlist)
-        print(numlist)
-        bogosort(numlist)
+        random.shuffle(listtosort)
+        print(listtosort)
+        bogosort(listtosort)
 
-print(bogosort(numlist))
+bogosort(numlist)
