@@ -8,9 +8,12 @@ for x in range(listsize):
     numlist.append(num)
 
 def bogosort(listtosort): #This can't be used to check if a list is sorted
+    count = 0
     while not all(b >= a for a, b in zip(listtosort, listtosort[1:])):
         random.shuffle(listtosort)
         print(listtosort)
+        count += 1
+    print("Wow! That only took {0} steps to sort!".format(count))
     return listtosort
 
 bogosort(numlist)
